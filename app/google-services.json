@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "226706771119",
+    "firebase_url": "https://androidsqlitedemo-5aeb2.firebaseio.com",
+    "project_id": "androidsqlitedemo-5aeb2",
+    "storage_bucket": "androidsqlitedemo-5aeb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226706771119:android:2a24f90fa02af2e6",
+        "android_client_info": {
+          "package_name": "skinnypojo.in.sqlite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "226706771119-394ff9mu5l8482qrsg44k8al0rilml17.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "skinnypojo.in.sqlite",
+            "certificate_hash": "1a6ad4cc4156b072b5188d76981b8fe119e3fb69"
+          }
+        },
+        {
+          "client_id": "226706771119-g9p8j2re475eqt3cecbv4bobipe26kbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBImJy08y-X02xZmVkpfKmGW35l2UkUal8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "226706771119-g9p8j2re475eqt3cecbv4bobipe26kbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
