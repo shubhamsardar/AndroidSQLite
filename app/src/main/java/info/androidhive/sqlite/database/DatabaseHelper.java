@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import info.androidhive.sqlite.database.model.Note;
+import info.androidhive.sqlite.utils.ShortingType;
 
 import static info.androidhive.sqlite.database.model.Note.TABLE_NAME;
 
@@ -48,14 +49,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public long insertNote(String note) {
+    public long insertNote(Note note) {
         // get writable database as we want to write data
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         // `id` and `timestamp` will be inserted automatically.
         // no need to add them
-        values.put(Note.COLUMN_NOTE, note);
+        values.put(Note.COLUMN_NOTE, note.getNote());
+
+        if(note.mTimeStamp!=null)
+        values.put(Note.COLUMN_TIMESTAMP,note.mTimeStamp.getTime()+"");
 
         // insert row
         long id = db.insert(TABLE_NAME, null, values);
@@ -91,12 +95,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return note;
     }
 
-    public List<Note> getAllNotes() {
+    public List<Note> getAllNotes(int sortingType) {
         List<Note> notes = new ArrayList<>();
+        String selectQuery = "";
 
-        // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE_NAME + " ORDER BY " +
-                Note.COLUMN_TIMESTAMP + " DESC";
+        switch (sortingType){
+
+            case ShortingType.DEFAULT:{
+                // Select All Query
+                selectQuery = "SELECT  * FROM " + TABLE_NAME + " ORDER BY " +
+                        Note.COLUMN_TIMESTAMP + " DESC";
+                break;
+            }
+
+            case ShortingType.ALPHA_ASSENDING:{
+                // Select All Query
+                 selectQuery = "SELECT  * FROM " + TABLE_NAME + " ORDER BY " +
+                        Note.COLUMN_NOTE + " ASC";
+                break;
+            }
+            case ShortingType.ALPHA_DECENDING:{
+                // Select All Query
+                 selectQuery = "SELECT  * FROM " + TABLE_NAME + " ORDER BY " +
+                        Note.COLUMN_NOTE + " DESC";
+                break;
+            }
+        }
+
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
